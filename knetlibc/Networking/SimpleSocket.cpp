@@ -12,9 +12,6 @@ KNET::SimpleSocket::SimpleSocket(int domain, int service, int protocol, int port
     // Establish Socket
     sock = socket(domain, service, protocol);
     test_connection(sock);
-    // Establish network connection
-    connection = connect_to_network(sock, address);
-    test_connection(connection);
 }
 
 // Test connection virtual function
@@ -36,6 +33,14 @@ struct sockaddr_in KNET::SimpleSocket::get_address()
     return address;
 }
 
-int KNET::SimpleSocket::get_connection() {
+int KNET::SimpleSocket::get_connection() 
+{
     return connection;
+}
+
+// Setter Functions
+
+void KNET::SimpleSocket::set_connection(int conc)
+{
+    connection = conc;
 }
